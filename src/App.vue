@@ -4,7 +4,7 @@
     <header
       class="mb-6 flex flex-col justify-between gap-4 rounded-2xl bg-white p-6 shadow-sm sm:flex-row sm:items-center">
       <div>
-        <h1 class="text-2xl font-bold text-slate-900">Buddy</h1>
+        <h1 class="text-2xl font-bold text-slate-900">exbuddy</h1>
         <!-- <p class="text-sm text-slate-500">Google Sheets Sync WebApp</p> -->
       </div>
 
