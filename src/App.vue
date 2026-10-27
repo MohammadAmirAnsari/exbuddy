@@ -109,7 +109,7 @@ export default {
           body: JSON.stringify({ entries: unsyncedRows })
         });
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Network response was not ok. Reason: ' + response.statusText);
         }
         this.transactions.forEach(t => {
           if (!t.synced) t.synced = true;
