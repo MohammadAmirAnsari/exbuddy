@@ -144,7 +144,6 @@ export default {
         });
 
         const data = await response.json();
-        console.log(data)
         this.dropdowns.descriptions = data.descriptions || [];
         this.dropdowns.platforms = data.platforms || [];
         this.dropdowns.persons = data.persons || [];
