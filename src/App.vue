@@ -42,18 +42,6 @@ export default {
         debit: 0,
         currency: 'INR'
       },
-      form: {
-        // yyyy-mm-dd
-        date: new Date().toLocaleDateString('en-CA'),
-        description: 'D1',
-        category: 'Food',
-        platform: 'UPI / GPay',
-        person: 'Self',
-        credit: 1000,
-        debit: 0,
-        currency: 'INR'
-      },
-
       transactions: []
     };
   },
