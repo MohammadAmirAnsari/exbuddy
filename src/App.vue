@@ -42,6 +42,17 @@ export default {
         debit: 0,
         currency: 'INR'
       },
+      form: {
+        // yyyy-mm-dd
+        date: new Date().toLocaleDateString('en-CA'),
+        description: 'D1',
+        category: 'Food',
+        platform: 'UPI / GPay',
+        person: 'Self',
+        credit: 1000,
+        debit: 0,
+        currency: 'INR'
+      },
 
       transactions: []
     };
@@ -102,15 +113,16 @@ export default {
       try {
         const response = await fetch(this.gasWebhookUrl, {
           method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ entries: unsyncedRows })
+          body: JSON.stringify({
+            action: 'appendNewDataInTable',
+            tableName: "January_20",
+            entries: unsyncedRows
+          })
         });
-        if (!response.ok) {
-          throw new Error('Network response was not ok. Reason: ' + response.statusText);
-        }
+
+        const data = await response.json();
+        console.log("Sync success:", data);
+
         this.transactions.forEach(t => {
           if (!t.synced) t.synced = true;
         });
@@ -138,10 +150,7 @@ export default {
     },
     async fetchDropdowns() {
       try {
-        const response = await fetch(this.gasWebhookUrl + '?functionName=getDropdowns', {
-          method: 'GET',
-          redirect: "follow"
-        });
+        const response = await fetch(this.gasWebhookUrl + '?functionGet=getDropdowns');
 
         const data = await response.json();
         this.dropdowns.descriptions = data.descriptions || [];
